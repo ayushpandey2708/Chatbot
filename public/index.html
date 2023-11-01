@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20%;
+        }
+
+        .user-message {
+            background-color: lightblue;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+            max-width:37%;
+            margin-left: 31%;
+        }
+
+        .bot-message {
+            background-color: lightgreen;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+            max-width: 37%;
+            margin-left: 31%;
+        }
+
+        #message {
+            width: 30%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: fixed;
+            margin-bottom:10px;
+            bottom: 0;
+        }
+
+
+        #send-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 15px;
+            margin-left: 440px;
+            margin-bottom: 10px;
+            position: fixed;
+            bottom: 0;
+        }
+        #message-history {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20%; 
+            height: 100%; 
+            background-color: lightblue;
+            overflow-y: auto; 
+            border-right: 1px solid #ccc; 
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+        }
+
+            #message-history div {
+                margin-bottom: 10px;
+                padding: 5px;
+                background-color: lightgreen;
+                border-radius: 5px;
+            }
+
+    </style>
+</head>
+
+<body>
+    <div id="message-history" class="message-history"></div>
+    <div id="chat-container" class="chat-container">
+
+        <div id="chat-messages"></div>
+        <input type="text" id="message" placeholder="Type a message...">
+        <button onclick="sendMessage()" id="send-button">Send</button>
+    </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/main.js"></script>
+</body>
+</html>
