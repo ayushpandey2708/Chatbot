@@ -4,19 +4,25 @@ const socketIo = require('socket.io');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
 
-mongoose.connect('mongodb://localhost:27017/chatbot', {
+
+const mongoURI = process.env.MONGO_URI;
+const openaiApiKey = process.env.OPENAI_API_KEY;
+const openaiEndpoint = process.env.OPENAI_ENDPOINT;
+console.log(mongoURI, openaiApiKey);
+
+
+mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
-
-const openaiApiKey = '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';
-const openaiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 
 const Message = require('./models/message');
