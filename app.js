@@ -98,25 +98,7 @@ async function sendMessageToOpenAI(userMessage) {
 }
 
 
-app.post('/chat', async (req, res) => {
-    const userMessage = req.body.message;
-    console.log(userMessage)
-    const userData = new Message({
-        sender: 'user',
-        content: userMessage,
-        timestamp: new Date(),
-    });
-    userData.save();
-    return res.status(500).json({ message: 'Error communicating with the chatbot' });
 
-    try {
-        const botResponse = await sendMessageToOpenAI(userMessage);
-
-         return res.json({ response: botResponse });
-    } catch (error) {
-         return res.status(500).json({ message: 'Error communicating with the chatbot' });
-    }
-});
 
 app.get('/message-history', async (req, res) => {
     try {
